@@ -1,10 +1,11 @@
 import React, { useContext } from 'react'
 import Signup from './pages/Signup'
-import Login from "./pages/login";
+import Login from "./pages/Login";
 import { Route, Routes } from 'react-router-dom'
 import {AuthContext} from './Contexts/AuthProvider';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
+import LandingPage from './pages/LandingPage';
 
 
 const App = () => {
@@ -13,9 +14,10 @@ const App = () => {
   // const Users = [{ id: 1, email: 'user@example.com', password: 'password' ,AllExpences: []}]
   // localStorage.setItem('users', JSON.stringify(Users))
   return (
-    <Routes>
-      <Route path='/' element={<Signup />} />
-      <Route path='/Login' element={<Login />} />
+    <Routes> 
+      <Route path='/' element={<LandingPage />} />
+      <Route path='/sign-up' element={<Signup />} />
+      <Route path='/login' element={<Login />} />
       <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
     </Routes>
   )

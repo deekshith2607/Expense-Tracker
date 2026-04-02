@@ -1,21 +1,27 @@
-import React, { useState } from "react";
+import React, { useState ,useContext} from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Contexts/AuthProvider";
 
 const Login = () => {
   const [Email, setEmail] = useState("");
   const [password, setpassword] = useState("");
+
+  const { login } = useContext(AuthContext);
+  const handellogin = (e) => {
+    e.preventDefault();
+
+    login(Email, password);
+    setEmail("");
+    setpassword("");
+  };
+
   return (
     <div className="h-screen w-screen  bg-[#CFDDDD] flex flex-col items-center justify-center p-10">
       <div className="h-[70%] w-full rounded-lg bg-white shadow-2xl  flex flex-col items-center  gap-4 justify-center">
         <h2 className="text-xl font-mono mt-5 text-[#115D5B] font-bold p-3 rounded-2xl border-2 border-[#115D5B]">
           Login
         </h2>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
-          className="flex flex-col mt-10 gap-4"
-        >
+        <form onSubmit={handellogin} className="flex flex-col mt-10 gap-4">
           <input
             type="email"
             className="Input"
@@ -40,13 +46,14 @@ const Login = () => {
             Login
           </button>
 
+        </form>
+        
           <h4>
             Don't have an account?{" "}
-            <Link to="/" className="text-[#115D5B] underline">
+            <Link to="/sign-up" className="text-[#115D5B] underline">
               Register
             </Link>
           </h4>
-        </form>
       </div>
     </div>
   );
