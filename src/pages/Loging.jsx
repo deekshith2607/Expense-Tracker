@@ -1,12 +1,14 @@
 import React, { useState ,useContext} from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
+import { RiGoogleFill } from "@remixicon/react";
+import { auth } from "../utilities/firebaseConfig";
 
-const Login = () => {
+const Loging = () => {
   const [Email, setEmail] = useState("");
   const [password, setpassword] = useState("");
 
-  const { login } = useContext(AuthContext);
+  const { login ,googleSignIn} = useContext(AuthContext);
   const handellogin = (e) => {
     e.preventDefault();
 
@@ -47,6 +49,10 @@ const Login = () => {
           </button>
 
         </form>
+      <button className="bg-[#115D5B] text-white p-2 rounded-md flex items-center gap-2" onClick={googleSignIn}>
+          <RiGoogleFill />
+          Login with Google
+        </button>
         
           <h4>
             Don't have an account?{" "}
@@ -58,4 +64,4 @@ const Login = () => {
     </div>
   );
 };
-export default Login;
+export default Loging;

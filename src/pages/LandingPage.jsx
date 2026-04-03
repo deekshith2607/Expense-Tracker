@@ -1,7 +1,13 @@
 import React from "react";
+import { useContext } from "react";
+import { AuthContext } from "../Contexts/AuthProvider";
 import image from "../assets/image.jpg";
 import { Link } from "react-router-dom";
+
+
 const LandingPage = () => {
+  const { logout } = useContext(AuthContext);
+  logout()
   return (
     <div className="h-screen  w-full relative  flex items-center  justify-center">
       <div className="h-full w-full flex items-center flex-col gap-10 bg- bg-linear-to-b from-green-200 to-[#CFDDDD]">
@@ -24,6 +30,8 @@ const LandingPage = () => {
           <Link to="/login" className="bg-[#115D5B] text-white p-3 rounded-md">
             Login
           </Link>
+        
+          
           
         </div>
        <p className="p-5 m-5 rounded-xl text-sm absolute bg-green-300 bottom-0">[Note] This is the first version of the website. Soon, new updates will come and the UI will get improved. </p>

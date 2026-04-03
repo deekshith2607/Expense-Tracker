@@ -7,7 +7,7 @@ import { RiGoogleFill } from "@remixicon/react";
 
 
 const Signup = () => {
-  const { signup,  } = useContext(AuthContext);
+  const { signup, googleSignIn, logout } = useContext(AuthContext);
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -54,15 +54,19 @@ const Signup = () => {
             Sign-Up
           </button>
         </form>
-        <button className="bg-[#115D5B] text-white p-2 px-5 items-center justify-center gap-1 rounded-md flex" ><RiGoogleFill />
+       
+        <button className="bg-[#115D5B] text-white p-2 px-5 items-center justify-center gap-1 rounded-md flex" onClick={googleSignIn}>
+          <RiGoogleFill />
           Sign-Up with Google
         </button>
+         
         <h5 className="font-sans">
           Already have an Account?{" "}
           <Link to="/login" className="text-[#115D5B] font-medium">
             Login
           </Link>
         </h5>
+       
       </div>
     </div>
   );

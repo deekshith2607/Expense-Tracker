@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import Signup from './pages/Signup'
-import Login from "./pages/login";
 import { Route, Routes } from 'react-router-dom'
 import {AuthContext} from './Contexts/AuthProvider';
 import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
+import Loging from './pages/Loging';
 
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
     <Routes> 
       <Route path='/' element={<LandingPage />} />
       <Route path='/sign-up' element={<Signup />} />
-      <Route path='/login' element={<Login />} />
+      <Route path='/login' element={<Loging />} />
       <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
     </Routes>
   )
