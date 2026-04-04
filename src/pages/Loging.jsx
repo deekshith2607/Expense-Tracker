@@ -1,5 +1,5 @@
-import React, { useState ,useContext} from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext, use } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { RiGoogleFill } from "@remixicon/react";
 import { auth } from "../utilities/firebaseConfig";
@@ -7,15 +7,25 @@ import { auth } from "../utilities/firebaseConfig";
 const Loging = () => {
   const [Email, setEmail] = useState("");
   const [password, setpassword] = useState("");
-
-  const { login ,googleSignIn} = useContext(AuthContext);
-  const handellogin = (e) => {
+  const navigate = useNavigate();
+  const { login, googleSignIn, logout, user } = useContext(AuthContext);
+  const handellogin = async (e) => {
     e.preventDefault();
-
-    login(Email, password);
-    setEmail("");
-    setpassword("");
+    if (user) {
+      navigate("/dashboard");
+    } else {
+      try {
+        await login(Email, password);
+        setEmail("");
+        setpassword("");
+      } catch (error) {
+        console.error("Login error:", error);
+      }
+    }
   };
+
+  console.log(user);
+  console.log(auth.currentUser);
 
   return (
     <div className="h-screen w-screen  bg-[#CFDDDD] flex flex-col items-center justify-center p-10">
@@ -47,19 +57,21 @@ const Loging = () => {
           <button className="bg-[#115D5B] text-white p-2 rounded-md">
             Login
           </button>
-
         </form>
-      <button className="bg-[#115D5B] text-white p-2 rounded-md flex items-center gap-2" onClick={googleSignIn}>
+        <button
+          className="bg-[#115D5B] text-white p-2 rounded-md flex items-center gap-2"
+          onClick={googleSignIn}
+        >
           <RiGoogleFill />
           Login with Google
         </button>
-        
-          <h4>
-            Don't have an account?{" "}
-            <Link to="/sign-up" className="text-[#115D5B] underline">
-              Register
-            </Link>
-          </h4>
+
+        <h4>
+          Don't have an account?{" "}
+          <Link to="/sign-up" className="text-[#115D5B] underline">
+            Register
+          </Link>
+        </h4>
       </div>
     </div>
   );
