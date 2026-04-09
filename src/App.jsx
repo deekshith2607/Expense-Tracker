@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
 import Loging from './pages/Loging';
+import AddTranSactionPage from './pages/AddTranSactionPage';
 
 
 const App = () => {
@@ -19,7 +20,8 @@ const App = () => {
       <Route path='/sign-up' element={<Signup />} />
       <Route path='/login' element={<Loging />} />
       <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-    </Routes>
+      <Route path='/add' element={<ProtectedRoute><AddTranSactionPage /></ProtectedRoute>} />
+     </Routes>
   )
 }
 

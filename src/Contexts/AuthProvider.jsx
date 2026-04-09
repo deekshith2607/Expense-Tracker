@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect, use } from "react";
+import React, { createContext, useState, useEffect} from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import { auth, db, GoogleProvider } from "../utilities/firebaseConfig";
 import { doc, setDoc, Timestamp } from "firebase/firestore";
@@ -59,10 +59,11 @@ const AuthProvider = ({ children }) => {
         navigate("/dashboard");
       } else {
         setuser(null);
-        navigate("/login");
+        setLoading(false);
+        navigate("/");
       }
-      return () => unsubscribe();
     });
+    return () => unsubscribe();
   }, []);
 
   const googleSignIn = async () => {
@@ -104,7 +105,9 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signup, login, googleSignIn, logout }}>
+    <AuthContext.Provider
+      value={{ user, signup, login, googleSignIn, logout, loading }}
+    >
       {!loading && children}
     </AuthContext.Provider>
   );

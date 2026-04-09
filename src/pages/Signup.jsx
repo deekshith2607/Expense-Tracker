@@ -1,72 +1,72 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
-import { useContext } from "react";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { RiGoogleFill } from "@remixicon/react";
 
-
 const Signup = () => {
-  const { signup, googleSignIn, logout } = useContext(AuthContext);
-  const [name, setname] = useState("");
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+  const { signup, googleSignIn } = useContext(AuthContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handelSignup = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
     signup(email, name, password);
-    setemail("");
-    setname("");
-    setpassword("");
+    setEmail("");
+    setName("");
+    setPassword("");
   };
 
   return (
-    <div className="h-screen w-screen bg-[#CFDDDD] p-10 flex items-center justify-center">
-      <div className="h-[70%] w-full rounded-lg bg-white shadow-2xl  flex flex-col items-center  gap-4 justify-center">
-        <h2 className="text-xl font-mono mt-5 text-[#115D5B] font-bold p-3 rounded-2xl border-2 border-[#115D5B]">
+    <div className="min-h-screen w-full bg-[#CFDDDD] flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-2xl flex flex-col items-center gap-6 p-6 sm:p-10">
+        <h2 className="text-2xl sm:text-3xl font-mono font-bold text-[#115D5B] p-3 rounded-2xl border-2 border-[#115D5B] mt-4">
           Sign-Up
         </h2>
-        <form className="flex flex-col mt-10 gap-4" onSubmit={handelSignup}>
+
+        <form className="flex flex-col gap-4 w-full mt-4" onSubmit={handleSignup}>
           <input
             type="text"
             placeholder="Enter Your Name"
-            className="Input"
+            className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-[#115D5B]"
             value={name}
-            onChange={(e) => setname(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
           <input
             required
             type="email"
             placeholder="Enter Your Email"
-            className="Input"
+            className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-[#115D5B]"
             value={email}
-            onChange={(e) => setemail(e.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <input
             required
             type="password"
             placeholder="Enter Your Password"
-            className="Input"
+            className="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-[#115D5B]"
             value={password}
-            onChange={(e) => setpassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="bg-[#115D5B] text-white p-2 rounded-md">
+          <button className="w-full bg-[#115D5B] text-white py-2 rounded-lg hover:bg-[#0f4b49] transition font-medium">
             Sign-Up
           </button>
         </form>
-       
-        <button className="bg-[#115D5B] text-white p-2 px-5 items-center justify-center gap-1 rounded-md flex" onClick={googleSignIn}>
-          <RiGoogleFill />
+
+        <button
+          className="w-full sm:w-auto bg-[#115D5B] text-white px-4 py-2 flex items-center justify-center gap-2 rounded-lg hover:bg-[#0f4b49] transition"
+          onClick={googleSignIn}
+        >
+          <RiGoogleFill size={20} />
           Sign-Up with Google
         </button>
-         
-        <h5 className="font-sans">
-          Already have an Account?{" "}
-          <Link to="/login" className="text-[#115D5B] font-medium">
+
+        <h5 className="text-sm sm:text-base font-sans">
+          Already have an account?{" "}
+          <Link to="/login" className="text-[#115D5B] font-medium hover:underline">
             Login
           </Link>
         </h5>
-       
       </div>
     </div>
   );
