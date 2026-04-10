@@ -33,7 +33,7 @@ A modern Expense Tracker web application built with React and Firebase that allo
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/expense-tracker.git
+git clone https://github.com/deekshith2607/Expense-Tracker.git
 cd expense-tracker
 ```
 
