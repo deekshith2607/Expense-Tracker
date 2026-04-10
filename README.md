@@ -1,16 +1,95 @@
-# React + Vite
+# 💰 Expense Tracker App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern Expense Tracker web application built with React and Firebase that allows users to manage their income and expenses efficiently.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* 🔐 User Authentication (Email & Google Sign-In)
+* ➕ Add Income and Expenses
+* 📊 Real-time data storage using Firebase Firestore
+* 🔍 Search transactions
+* 🔄 Toggle between Income and Expense views
+* 📱 Responsive UI using Tailwind CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** React.js
+* **Styling:** Tailwind CSS
+* **Backend / Database:** Firebase Firestore
+* **Authentication:** Firebase Auth
+
+---
+
+
+
+---
+
+## ⚙️ Installation & Setup
+
+1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/expense-tracker.git
+cd expense-tracker
+```
+
+2. Install dependencies
+
+```bash
+npm install
+```
+
+3. Setup Firebase
+
+* Create a Firebase project
+* Enable Authentication (Email/Google)
+* Enable Firestore Database
+* Add your Firebase config in:
+
+  ```js
+  src/utilities/firebaseConfig.js
+  ```
+
+4. Start the development server
+
+```bash
+npm run dev
+```
+
+---
+
+## 🔥 Firebase Data Structure
+
+```
+users (collection)
+ └── userId (document)
+      └── transactions (subcollection)
+           ├── transactionId
+           │    ├── amount
+           │    ├── type (income/expense)
+           │    ├── category
+           │    ├── date
+           │    └── description
+```
+
+## 🎯 Future Improvements
+
+* 📈 Charts & Analytics
+* 🧾 Export data (PDF/CSV)
+* 🌙 Dark mode
+* 💡 Budget tracking
+* 📃 update and Delete Transaction
+
+---
+
+## 👨‍💻 Author
+
+**Deekshith Rao**
+
+---
+
+⭐ If you like this project, give it a star on GitHub!
