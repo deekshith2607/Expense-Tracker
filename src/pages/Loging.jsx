@@ -28,8 +28,8 @@ const Loging = () => {
   console.log(auth.currentUser);
 
   return (
-    <div className="h-screen w-screen  bg-[#CFDDDD] flex flex-col items-center justify-center p-10">
-      <div className="h-[70%] w-full rounded-lg bg-white shadow-2xl  flex flex-col items-center  gap-4 justify-center">
+    <div className="min-h-screen w-full bg-[#CFDDDD] flex items-center justify-center px-4">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-2xl flex flex-col items-center gap-6 p-6 sm:p-10">
         <h2 className="text-xl font-mono mt-5 text-[#115D5B] font-bold p-3 rounded-2xl border-2 border-[#115D5B]">
           Login
         </h2>
