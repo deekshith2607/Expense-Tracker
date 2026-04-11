@@ -10,6 +10,9 @@ import {
   where,
   updateDoc,
   deleteDoc,
+  doc,
+  getDoc,
+  
 } from "firebase/firestore";
 import { AuthContext } from "./AuthProvider";
 import { useSearchParams } from "react-router-dom";
@@ -48,6 +51,39 @@ const Transactionprovider = ({ children }) => {
       alert("Error adding transaction: ", error);
     }
   };
+  //Update transaction
+    const update = async (docId,updatedData)=>{
+      const updateRef = doc(db , "users" ,user.uid,"transactions",docId)
+
+      try{
+        await updateDoc(updateRef,{
+          Name: updatedData.Name,
+          Amount: updatedData.Amount,
+          category: updatedData.Category,
+          Type: updatedData.Type
+        })
+        const success = getDoc(updateRef)
+        return success
+        
+      }
+      catch(err){
+       alert(err)
+      }
+
+    }
+
+    //Delete
+      const deleteTransaction  = async (id)=>{
+       try{
+        await deleteDoc(doc(db,"users" , user.uid,"transactions",id))
+        // Update local state after deletion
+        setIncome(prev => prev.filter(t => t.id !== id))
+        setExpense(prev => prev.filter(t => t.id !== id))
+        window.location.reload()
+      } catch(err){
+        alert(err)
+      }
+      }
 
   // Get income transactions from firebase
   const getIncome = async () => {
@@ -73,6 +109,8 @@ const Transactionprovider = ({ children }) => {
       console.error("Error getting income transactions: ", error);
     }
   };
+
+
   //   Get expense from firebase
   const getExpense = async () => {
     if (!user) {
@@ -113,6 +151,8 @@ const Transactionprovider = ({ children }) => {
         getExpense,
         totalIncome,
         totalExpense,
+        update,
+        deleteTransaction 
       }}
     >
       {children}

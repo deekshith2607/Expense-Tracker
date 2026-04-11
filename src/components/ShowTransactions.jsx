@@ -9,18 +9,19 @@ const ShowTransactions = () => {
   const [Type, setType] = useState("Income");
   const [Transactions, setTransactions] = useState([]);
   const [SearchVal, setSearchVal] = useState("");
+  const [IncomeData, setIncomeData] = useState([])
+  const [ExpenseData, setExpenseData] = useState([])
 
   useEffect(() => {
     const fetchData = async () => {
-      let data = [];
+    
+        let i = await getIncome();
+        setIncomeData(i)
+        let e = await getExpense()
+        setExpenseData(e)
+    
 
-      if (Type === "Income") {
-        data = await getIncome();
-      } else {
-        data = await getExpense();
-      }
-
-      setTransactions(data);
+      
     };
 
     fetchData();
@@ -34,13 +35,18 @@ const ShowTransactions = () => {
       <ToggleTransaction handelToggle={handelToggle} />
       <Searchbar Searchval={SearchVal} setSearchVal={setSearchVal} />
       <div className="h-[72%] mt-2 w-full flex items-center gap-2 overflow-y-auto justify-start flex-col">
-        {(SearchVal && Transactions?.length
-          ? Transactions.filter((transaction) =>
+        {(Type == "Income"  && SearchVal && IncomeData?.length
+          ? IncomeData.filter((transaction) =>
               transaction.Category.toLowerCase().includes(
                 SearchVal.toLowerCase(),
               ),
             )
-          : Transactions || []
+          : Type == "Expense"  && SearchVal && ExpenseData?.length
+          ? ExpenseData.filter((transaction) =>
+              transaction.Category.toLowerCase().includes(
+                SearchVal.toLowerCase(),
+              ),
+            ):Type =="Income"?IncomeData:Type =="Expense"?ExpenseData : []
         ).map((transaction) => (
           <TransactionCard key={transaction.id} transaction={transaction} />
         ))}
