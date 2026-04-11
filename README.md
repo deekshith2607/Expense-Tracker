@@ -12,6 +12,7 @@ A modern Expense Tracker web application built with React and Firebase that allo
 * 🔍 Search transactions
 * 🔄 Toggle between Income and Expense views
 * 📱 Responsive UI using Tailwind CSS
+* 📃 update and Delete
 
 ---
 
@@ -82,7 +83,6 @@ users (collection)
 * 🧾 Export data (PDF/CSV)
 * 🌙 Dark mode
 * 💡 Budget tracking
-* 📃 update and Delete Transaction
 
 ---
 
