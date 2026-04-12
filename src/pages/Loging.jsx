@@ -24,8 +24,7 @@ const Loging = () => {
     }
   };
 
-  console.log(user);
-  console.log(auth.currentUser);
+  
 
   return (
     <div className="min-h-screen w-full bg-[#CFDDDD] flex items-center justify-center px-4">

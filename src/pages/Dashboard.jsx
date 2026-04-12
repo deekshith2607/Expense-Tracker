@@ -22,11 +22,11 @@ const Dashboard = () => {
       </div>
 
       {/* Income & Expense */}
-      <div className="flex flex-col sm:flex-row w-full gap-4 mb-4">
-        <div className="flex-1">
+      <div className="flex flex-col sm:flex-row w-full h-auto lg:justify-center lg:items-center gap-4 mb-4">
+        <div className="">
           <Income />
         </div>
-        <div className="flex-1">
+        <div className="">
           <Expense />
         </div>
       </div>
