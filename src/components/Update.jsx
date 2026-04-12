@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { TransactionContext } from "../Contexts/Transactionprovider";
 
 const Update = ({ transaction, onClose }) => {
-  console.log(transaction);
+
 
   const [CategorySelected, setCategorySelected] = useState(false);
   const [TypeSelected, setTypeSelected] = useState(false);
@@ -126,6 +126,7 @@ const Update = ({ transaction, onClose }) => {
           Update Transaction
         </button>
       </form>
+      <button className=" mt-4 bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600 transition" onClick={onClose}>Close</button>
     </div>
   );
 };

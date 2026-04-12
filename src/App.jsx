@@ -7,7 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
 import Loging from './pages/Loging';
 import AddTranSactionPage from './pages/AddTranSactionPage';
-import Update from './components/Update';
+import NotFound from './pages/NotFound';
 
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
       <Route path='/login' element={<Loging />} />
       <Route path='/dashboard' element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path='/add' element={<ProtectedRoute><AddTranSactionPage /></ProtectedRoute>} />
-      <Route path='/update' element={<ProtectedRoute><Update /></ProtectedRoute>} />
+      <Route path='*' element={<NotFound />}/>
      </Routes>
   )
 }

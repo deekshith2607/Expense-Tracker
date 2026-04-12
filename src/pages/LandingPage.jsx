@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 const LandingPage = () => {
   const { logout } = useContext(AuthContext);
-  logout();
 
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-gradient-to-b from-green-200 to-[#CFDDDD]">
+    <div className="h-screen w-full flex items-center justify-center bg-linear-to-b from-green-200 to-[#CFDDDD]">
       <div className="flex flex-col items-center justify-center text-center gap-6 px-4 sm:px-10 md:px-20">
         {/* Title */}
         <h2 className="text-3xl sm:text-4xl font-mono font-bold mt-6">
